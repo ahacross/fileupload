@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --mode prd",
+    "dev": "vite",
+    "dev2": "vite --mode prd",
     "build": "vite build --mode prd",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
@@ -13,6 +14,7 @@
   "dependencies": {
     "@vueuse/core": "^10.9.0",
     "axios": "^1.6.8",
+    "dayjs": "^1.11.12",
     "pinia": "^2.1.6",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"

@@ -29,11 +29,10 @@
 import { ref } from 'vue'
 import axios from 'axios'
 
-console.log(import.meta.env)
 axios.defaults.baseURL = import.meta.env.MODE === 'prd' ? import.meta.env.VITE_API_SERVER : ''
-console.log(axios.defaults.baseURL)
 
-const maxFileSize = 1 * 1024 * 1024 * 1024 // 1GB
+const maxFileSize = 2 * 1024 * 1024 * 1024 // 1GB
+
 const fileInput = ref(null)
 const files = ref([])
 
@@ -80,7 +79,9 @@ const removeFile = async (index) => {
     fileData.cancelTokenSource.cancel('File upload cancelled by the user.')
   } else if (fileData.status === 'completed') {
     try {
-      const response = await axios.post('/fast/delete', { filename: fileData.serverFilename })
+      const response = await axios.post('/fast/delete', {
+        filename: fileData.serverFilename
+      })
       console.log('File deleted:', response.data)
     } catch (error) {
       console.error('Error deleting file:', error)
